@@ -1,0 +1,61 @@
+// .trigger {
+//     font-size: 18px;
+//     line-height: 64px;
+//     cursor: pointer;
+//     transition: color .3s;
+//     text-align: center;
+//     color: #fff;
+// }
+// .trigger:hover {
+//   color: #1890ff;
+// }
+// .logo {
+//   height: 32px;
+//   margin: 16px;
+//   h1 {
+//     display: inline-block;
+//     margin: 0 0 0 12px;
+//     color: #fff;
+//     font-weight: 600;
+//     font-size: 18px;
+//     font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+//     vertical-align: middle;
+//   }
+// }
+
+.ant-menu-submenu>.ant-menu {
+  background-color: rgba(248, 248, 248, 1);
+}
+
+.rootHeader {
+  padding: 0 0 0 30px!important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #001020;
+  color: #fff;
+
+  .headerTitle {
+    font-size: 20px;
+  }
+
+  .headerinfo {
+    .userbar {
+      img {
+        width: 18px;
+        height: 18px;
+        vertical-align: sub;
+        margin-right: 5px;
+      }
+    }
+
+    .logout {
+      width: 64px;
+      display: inline-block;
+      margin-left: 20px;
+      text-align: center;
+      cursor: pointer;
+      border-left: 1px solid #7d7d7d;
+    }
+  }
+}

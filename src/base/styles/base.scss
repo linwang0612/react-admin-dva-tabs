@@ -1,0 +1,23 @@
+@import './table.scss';
+@import './baseListStyle.scss';
+
+$base-color: #05A9F4; // 主色调
+
+.icon {
+    width: 1.7em;
+    height: 1.7em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.ant-form-explain, .ant-form-extra{
+  font-size: 12px!important;
+}
+
+.window-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}

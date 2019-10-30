@@ -1,0 +1,229 @@
+.EquipmentList {}
+
+.addEquipmentList {
+  .ant-modal-body {
+    padding: 30px 50px 10px 30px;
+
+    .ant-form-item {
+      margin-bottom: 0px;
+      height: 60px;
+    }
+  }
+}
+
+.distributorModal {
+  .ant-modal-body {
+    padding: 0px;
+
+    .SearchComp {
+      padding-left: 30px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
+  ._pagination {
+    // position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    // border-radius: 4px;
+  }
+}
+
+.devicelModal {
+  .ant-modal-body{
+    padding: 0;
+  }
+  .step {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    // &.step-1 {
+    //   padding-left: 30px;
+    //   height:180px;
+    //   align-items: center;
+    //   justify-content: center;
+    //   .stockList {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     overflow-y: auto;
+    //     max-height: 180px;
+    //     //margin-top: 20px;
+    //     &-item {
+    //       cursor: pointer;
+    //       font-size:14px;
+    //       color:#595959;
+    //       margin-right:30px;
+    //       height: 40px;
+    //       line-height: 40px;
+    //       &.active {
+    //         color:#05A9F4;
+    //       }
+    //     }
+    //   }
+    // }
+
+    &.step-1 {
+      padding-left: 30px;
+      height: 130px;
+      padding-top: 10px;
+      padding-bottom: 28px;
+      padding-right: 30px;
+
+      .ant-form {
+        width: 100%;
+
+        .ant-form-item {
+          margin-bottom: 0;
+        }
+
+        .ant-row {
+          .ant-form-item {
+            font-size: 14px;
+          }
+
+          &:nth-of-type(1) {
+            .ant-form-item {
+              margin-bottom: 30px;
+            }
+
+            .ant-form-item-label label {
+              font-size: 14px;
+              color: #333;
+              font-weight: 500;
+            }
+
+            .label-text {
+              font-size: 14px;
+              color: #333;
+              font-weight: 500;
+              word-break: break-all;
+            }
+          }
+
+          &:nth-of-type(2) {
+            .ant-form-item-control-wrapper {
+              // margin-left: 21px;
+            }
+
+            .ant-upload {
+              .ant-btn {
+                height: 32px;
+                width: 106px;
+                font-size: 14px;
+              }
+            }
+
+            .templateDownload {
+              line-height: 34px;
+              margin-top: 4px;
+              color: #595959;
+
+              .link {
+                color: #05A9F4;
+              }
+            }
+          }
+
+          &:nth-of-type(3) {
+            .ant-form-item-control-wrapper {
+              margin-left: 21px;
+            }
+
+            .desc {
+              font-size: 12px;
+              color: #8C8C8C;
+            }
+          }
+
+        }
+
+      }
+    }
+
+
+    &.step-2 {
+      flex-wrap: wrap;
+      padding-left: 30px;
+      padding-right: 30px;
+      height: 130px;
+      padding-top: 10px;
+
+      .row-1 {
+        width: 100%;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 36px;
+        display: flex;
+
+        label {
+          font-size: 14px;
+          font-weight: 500;
+          width: 50px;
+        }
+
+        span {
+          word-break: break-all;
+        }
+      }
+
+      .result {
+        width: 100%;
+        line-height: 42px;
+        font-size: 14px;
+        margin-bottom: 30px;
+        height: 88px;
+
+        .link {
+          color: #05A9F4;
+        }
+
+        .success {
+          display: flex;
+          justify-content: space-between;
+          color: #595959;
+          font-weight: 500;
+
+          .count {
+            color: #23BC08;
+            font-size: 18px;
+          }
+        }
+
+        .err {
+          display: flex;
+          justify-content: space-between;
+          color: #595959;
+          font-weight: 500;
+
+          .count {
+            color: #E52C00;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+  }
+  .footer {
+    border-top:1px solid #E9E9E9;
+    height:60px;
+    padding-right:30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .upload-demo-start{
+      margin-left: 10px;
+    }
+  }
+}

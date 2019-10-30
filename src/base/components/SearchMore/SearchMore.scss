@@ -1,0 +1,68 @@
+.SearchMore {
+  display: flex;
+  background-color: #fff;
+
+  .compDiv {
+    width: 100%;
+    padding-left: 16px;
+
+    ._col {
+      height: 54px;
+      display: flex;
+      align-items: center;
+
+      .ant-form-item {
+        width: 100%;
+
+        ::-webkit-input-placeholder {
+          /* WebKit browsers */
+          color: #BFBFBF;
+        }
+
+        .ant-form-item-label {
+          text-align: right;
+          vertical-align: middle;
+          // line-height: 32px;
+          display: inline-block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 14px !important;
+          color: #333;
+        }
+
+        // .ant-form-item-label {
+        //   label {
+        //     font-size: 14px !important;
+        //     color: #333;
+        //   }
+        // }
+
+        .ant-calendar-picker {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  .btnDiv {
+    width: 250px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: 11px;
+    // padding-right: 25px;
+    margin-right: 25px;
+
+    .ant-btn {
+      width: 75px;
+      margin: 0 5px;
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 32px;
+      color: #05A9F4;
+    }
+  }
+}

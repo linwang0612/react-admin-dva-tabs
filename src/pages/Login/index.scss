@@ -1,0 +1,156 @@
+.Login {
+  background-image: url('../../assets/images/login-bg.png');
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+
+  .content {
+    position: relative;
+    // height: 550px;
+    width: 320px;
+    margin: 0 auto;
+    padding-top: 285px;
+
+    .loginLeft {
+      width: 413px;
+      height: 550px;
+      float: left;
+      background: rgba(48, 92, 236, 0.8);
+
+      .loginCon {
+        text-align: center;
+        padding-top: 213px;
+
+        img {
+          height: 42px;
+          width: 115px;
+        }
+
+        .loginTitle {
+          font-size: 18px;
+          font-family: PingFangSC-Regular;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+          padding-top: 10px;
+        }
+      }
+    }
+
+    .loginRight {
+      // width: 411px;
+      // float: left;
+      height: 550px;
+      // background: rgba(255, 255, 255, 1);
+
+    }
+
+    .anticon {
+      color: #fff;
+    }
+
+    .loginBox {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 550px;
+      // width: 411px;
+      z-index: 1;
+      // background: #fff;
+      // padding-top: 285px;
+
+      .ant-form-item {
+        height: 70px;
+        margin-bottom: 0px;
+      }
+
+      .ant-input {
+        border-radius: 0;
+        padding: 4px 35px;
+      }
+
+      .ant-btn {
+        border-radius: 0;
+      }
+
+      .title {
+        height: 38px;
+        font-size: 26px;
+        font-family: HYYaKuHeiW;
+        color: rgba(255, 255, 255, 1);
+        display: flex;
+        justify-content: center;
+        margin-bottom: 90px;
+      }
+
+      .login-form-input {
+        .ant-input {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 24px;
+          border: 0;
+          color: #fff;
+        }
+        input:-internal-autofill-selected {
+          // background-color: rgb(232, 240, 254) !important;
+          background-color: red !important;
+          background-image: none !important;
+          color: rgb(0, 0, 0) !important;
+      }
+        .ant-input:focus {
+          background: rgba(255, 255, 255, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          // border: 0;
+        }
+        .ant-input:selected{
+          background-color: red !important;
+          border: 0;
+        }
+        input:focus{
+          border: 0;
+        }
+
+        input::-webkit-input-placeholder {
+          color: #fff;
+        }
+
+        input::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: #fff;
+        }
+
+        input:-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: #fff;
+        }
+
+        input:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: #fff;
+        }
+
+      }
+
+      .ant-form-explain {
+        padding-left: 35px;
+      }
+
+      .login-form-button {
+        width: 312px;
+        height: 48px;
+        background: #008CE3;
+        border-radius: 24px;
+        font-size: 18px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        margin-top: 50px;
+        border: 0;
+      }
+
+      .login-form-button:hover {
+        background-color: rgba(32, 77, 190, 1);
+      }
+    }
+  }
+}

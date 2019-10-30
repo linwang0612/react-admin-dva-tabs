@@ -1,0 +1,14 @@
+.footerPagination {
+    background-color: #ffffff;
+    line-height: 54px;
+    font-size: 14px;
+    padding: 0 25px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    ._pagintion {
+        float: right;
+        margin-top: 14px;
+    }
+}
