@@ -5,7 +5,7 @@ import './pagination.scss';
 
 class FooterPagination extends PureComponent {
     render() {
-        const widthCalc = 180 //this.props.global.collapsed ? 80 : 160;
+        const widthCalc = 160 //this.props.global.collapsed ? 80 : 160;
         return (
             <div className="footerPagination" style={{ width: `calc(100% - ${widthCalc}px)` }}>
                 <span className="totalText">{`共 ${this.props.total} 条记录`}</span>

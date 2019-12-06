@@ -6,17 +6,21 @@ import './index.scss';
 
 const { Header, Sider, Content } = Layout;
 
+const isLocalHost = window.location.hostname === 'localhost';
+
 export default function Home(props) {
   return (
     <Layout>
-      <Header className="rootHeader">
-        <Userbar />
-      </Header>
+      {
+        isLocalHost &&
+        <Header className="rootHeader">
+          <Userbar />
+        </Header>
+      }
       <Layout>
         <Sider
           trigger={null}
-          width={180}
-          theme="light"
+          width={160}
           style={{ boxShadow: '0px 5px 6px 0px rgba(130,130,130,0.5)', zIndex: 2 }}
         >
           <NavLeft />

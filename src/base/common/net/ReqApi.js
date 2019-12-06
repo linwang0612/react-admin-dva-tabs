@@ -32,20 +32,20 @@ const handlerReq = req =>
   req
     .then(response => response.json())
     .then(response => {
-      if (response.code == '2000') {
+      if (response.status == '2000') {
         // if (response.data === null || response.data === undefined) {
         //   message.error('服务器出错，请稍后再试')
         //   return Promise.reject(response)
         // }
         return Promise.resolve(response.data)
       } else if (
-        response.code === 4013 ||
-        response.code === 4014 ||
-        response.code === 4015 ||
-        response.code === 4020
+        response.status === 4013 ||
+        response.status === 4014 ||
+        response.status === 4015 ||
+        response.status === 4020
       ) {
         message.error('token失效，请重新登录')
-        history.push('/')
+        history.push('/#/productlist')
         return Promise.reject(response)
       } else {
         message.error(`${response.message}`)

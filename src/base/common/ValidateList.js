@@ -139,11 +139,51 @@ export default (cfg = {}) => {
     case 'thanZero':
       a = {
         type: 'string',
-        pattern:/^[-+]?(?:[0-9]|[1-9]\d*)(?:\.\d{0,2})?$/,
+        pattern: /^[-+]?(?:[0-9]|[1-9]\d*)(?:\.\d{0,2})?$/,
         message: `${label} 请输入数字,不超过两位小数`,
       };
       break;
-    //大于0的自然数，可控制小数位数  greater0
+    //不必填
+    case 'gtZeroNo':
+    case 'gtEqZeroNo':
+      a = {
+        validator(rule, value, callback) {
+          let num;
+          try {
+            num = Number(value);
+          } catch (ex) {
+            callback(`请输入${label}`)
+          };
+          if (isNaN(num)) {
+            callback(`请输入${label}`)
+          } else if (/^0\d+/.test(value + "")) {
+            callback(`请输入${label}`)
+          } else {
+            if (value === 0) {
+              if (cfg.type == "gtZeroNo") {
+                callback(`'请输入${label}'`)
+              } else {
+                callback()
+              }
+            } else if (value < 0) {
+              callback(`${label}不能为负数`)
+            } else {
+              let v = (value + "").match(/\.\d+/);
+              let valLen = (value + "").split('.')[0].length;
+              if (v != null && cfg.decimal != undefined && v[0].length > Number(cfg.decimal) + 1) {
+                callback(`支持输入${cfg.decimal}位小数`);
+              } else if (cfg.maxLen && valLen > cfg.maxLen) {
+                callback(`支持输入${cfg.maxLen}位整数`);
+              } else if (cfg.max && value > Number(cfg.max)) {
+                callback(`${label} 不能大于${cfg.max}!`);
+              } else if (cfg.min && value < Number(cfg.min)) {
+                callback(`${label} 不能小于${cfg.min}!`);
+              } else { callback() };
+            }
+          }
+        }
+      };
+      break;
     case 'gtZero':
     //大于等于0的自然数，可控制小数位数
     case 'gtEqZero':
@@ -153,7 +193,7 @@ export default (cfg = {}) => {
             if (cfg.noRequired) {
               callback();
             } else {
-                callback(`${label} 数值必填`);
+              callback(`${label} 必填`);
             }
           } else {
             let num;
@@ -177,8 +217,11 @@ export default (cfg = {}) => {
                 callback(`${label} 不能小于0！`)
               } else {
                 let v = (value + '').match(/\.\d+/);
+                let valLen = (value + '').split('.')[0].length;
                 if (v != null && cfg.decimal != undefined && v[0].length > Number(cfg.decimal) + 1) {
                   callback(`${label} 小数位数不超过${cfg.decimal}位!`);
+                } else if (cfg.maxLen && valLen > cfg.maxLen) {
+                  callback(`${label} 整数位数不能超过${cfg.maxLen}位!`);
                 } else if (cfg.max && value > Number(cfg.max)) {
                   callback(`${label} 不能大于${cfg.max}!`);
                 } else if (cfg.min && value < Number(cfg.min)) {
@@ -187,6 +230,32 @@ export default (cfg = {}) => {
               }
             }
           }
+        }
+      };
+      break;
+    case 'day':
+      a = {
+        validator(rule, value, callback) {
+          let num;
+          try {
+            num = Number(value);
+          } catch (ex) {
+            callback(`${label} 请输入数字类型！`)
+          }
+          if (value === '') {
+            callback(`请输入${label}`)
+          }
+          else if (isNaN(num)) {
+            callback(`${label} 请输入数字类型！`)
+          } else if (/^0\d+/.test(value + '')) {
+            callback(`${label} 请输入数字类型！`)
+          } else if ((value + '').indexOf('.') != -1) {
+            callback(`${label} 只能输入正整数！`)
+          } else if (value < 1) {
+            callback(`${label} 请输入大于0的整数！`)
+          } else if ((value + '').length > 6) {
+            callback(`${label} 不能大于6位整数！`)
+          } else { callback() }
         }
       };
       break;
@@ -225,12 +294,12 @@ export default (cfg = {}) => {
         message: `${label} 请输入6-20位数字或字母支持特殊字符 '_' 、 '-' 、 '.'`,
       };
       break;
-     //CEM-芯片序列号
+    //CEM-芯片序列号
     case 'deviceCode':
       a = {
         type: 'string',
         // pattern: /^([a-z0-9\.\_\-\.])/i,
-        pattern:/^[\da-zA-Z-_]*$/,
+        pattern: /^[\da-zA-Z-_]*$/,
         message: `${label} 只能输入数字或字母支持特殊字符 '_' 、 '-' `,
       };
       break;

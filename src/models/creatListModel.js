@@ -9,8 +9,8 @@ export default function createListModel(options) {
     tableLoading: false, //加载动画
     listData: {}, //列表数据
     current: { //分页
-      current: 1,
-      size: 10
+      page: 1,
+      pageSize: 10
     },
     searchFields: {}, //搜索
     ...initState

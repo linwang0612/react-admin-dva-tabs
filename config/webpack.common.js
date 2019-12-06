@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css插件
@@ -12,7 +11,7 @@ module.exports = {
     login: './src/pages/Login/index.js'
   },
   output: {
-    filename: 'scripts/[name].js?[chunkhash]',
+    filename: 'scripts/[name].js?[hash]',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
   },
@@ -20,10 +19,6 @@ module.exports = {
     alias: {
       base: path.resolve(__dirname, './src/base') // 配置别名
     }
-  },
-  externals: {
-    'BMap': 'BMap',
-    'BMap_Symbol_SHAPE_CIRCLE': 'BMap_Symbol_SHAPE_CIRCLE'
   },
   module: {
     rules: [{

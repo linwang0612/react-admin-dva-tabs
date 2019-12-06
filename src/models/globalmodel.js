@@ -1,65 +1,77 @@
-import menuDate from '../router/menuDate';
-
-const defaultSelected = pathname => {
-    let showindex = []
-    function findindex(menu, keys) {
-        menu.forEach((item, index) => {
-            if (item.path === pathname) {
-                if (keys) {
-                    let keyStr = keys.join('');
-                    for (let i = 1; i <= keys.length; i++) {
-                        showindex.unshift(keyStr.substring(0,i));
-                    }
-                    showindex.unshift(keyStr + index);
-                } else {
-                    showindex.unshift(index + '');
-                }
-            } else {
-                if (Object.prototype.toString.call(item.children) === '[object Array]') {
-                    if (keys) {
-                        findindex(item.children, [...keys,index])
-                    } else {
-                        findindex(item.children, [index])
-                    }
-                } else if (Object.prototype.toString.call(item.insidePages) === '[object Array]') {
-                    if (keys) {
-                        findindex(item.insidePages, [...keys,index])
-                    } else {
-                        findindex(item.insidePages, [index])
-                    }
-                }
-            }
-        })
-    }
-    findindex(menuDate);
-    return showindex
-}
-
 export default {
-    namespace: 'global',
-    state: {
-        selectedMenuKeys: [],
+  namespace: 'global',
+  state: {
+    tabsList: [], //tabs页签列表
+    activeKey: null, //当前激活的页签
+    tabTrans: {} //页签传递参数
+  },
+  reducers: {
+    setTabsList(state, { list }) {
+      return { ...state, tabsList: list }
     },
-    reducers: {
-        setKeys(state, { payload }) {
-            return { ...state, selectedMenuKeys: payload }
+    setActiveKey(state, { key }) {
+      return { ...state, activeKey: key }
+    },
+    setTabTrans(state, { trans }) {
+      return {
+        ...state,
+        tabTrans: {
+          ...state.tabTrans,
+          ...trans
         }
+      }
+    }
+  },
+  effects: {
+    * addTabs({ path, trans = {} }, { put, select }) {
+      const { tabsList } = yield select(({ global }) => global)
+      if (!tabsList.includes(path)) {
+        // 没有此菜单
+        yield put({ type: 'setTabsList', list: tabsList.concat([path]) });
+      }
+      yield put({ type: 'setActiveKey', key: path });
+      if (trans.path) {
+        yield put({ type: 'setTabTrans', trans: trans });
+      }
     },
-    subscriptions: {
-        setup({ dispatch, history }) {
-            history.listen(({ pathname }) => {
-                dispatch({
-                    type: 'setKeys',
-                    payload: defaultSelected(pathname)
-                });
-                // if (pathname === '/') {
-                //     if (UserInfo.getTokenId()) {
-                //         console.log('登陆了', UserInfo.getTokenId())
-                //     } else {
-                //         console.log('没登录')
-                //     }
-                // }
-            });
-        },
+    * removeTabs({ targetKey }, { put, select }) {
+      let { tabsList, activeKey } = yield select(({ global }) => global);
+      const newList = tabsList.filter(item => item !== targetKey);
+
+      let newKey = activeKey;
+      if (activeKey === targetKey) {
+        let keyIndex = tabsList.indexOf(targetKey);
+        if (tabsList.length === keyIndex + 1) {
+          keyIndex--
+        } else {
+          keyIndex++
+        }
+        newKey = tabsList[keyIndex]
+      }
+
+      yield put({ type: 'setTabsList', list: newList });
+      yield put({ type: 'setActiveKey', key: newKey });
     },
+    * addRemoveTabs({ path, targetPath, trans = {} }, { put, select }) {
+      const { tabsList } = yield select(({ global }) => global);
+
+      let newList = [];
+      if (tabsList.includes(targetPath)) {
+        newList = tabsList.filter(item => item !== path);
+      } else {
+        newList = tabsList.map(item => item === path ? targetPath : item);
+      }
+
+      yield put({ type: 'setTabsList', list: newList });
+      yield put({ type: 'setActiveKey', key: targetPath });
+      if (trans.path) {
+        yield put({ type: 'setTabTrans', trans: trans });
+      }
+    },
+    * closeOtherTab(_, { put, select }) {
+      let { activeKey } = yield select(({ global }) => global);
+      yield put({ type: 'setTabsList', list: [ activeKey ] });
+      yield put({ type: 'setActiveKey', key: activeKey });
+    }
+  },
 }

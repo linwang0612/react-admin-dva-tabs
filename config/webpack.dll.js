@@ -3,7 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    react: ['react', 'react-dom'],
+    react: ['react', 'react-dom', 'antd' ],
   },
   output: {
     filename: '[name].dll.js', // 动态链接库输出的文件名称

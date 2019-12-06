@@ -1,5 +1,10 @@
 $base-color: #05A9F4;
-
+.ant-tabs-bar{
+  margin: 0px!important;
+}
+.ant-layout-sider{
+  background: #001529!important;
+}
 .baseListStyle {
   .ant-btn-danger {
     background: rgba(0, 0, 0, 0.04);
@@ -12,11 +17,13 @@ $base-color: #05A9F4;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   }
-  .ant-btn-danger:hover, .ant-btn-danger:focus {
+
+  .ant-btn-danger:hover,
+  .ant-btn-danger:focus {
     color: rgba(245, 34, 45, 1);
     background: rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(217, 217, 217, 1);
-}
+  }
 
   .fontStatusY {
     color: #23BC08;
@@ -122,10 +129,17 @@ $base-color: #05A9F4;
       font-size: 14px
     }
 
-    width: calc(100% - 48px);
+    width: calc(100% - 5px);
     margin: 0 auto;
     background-color: #ffffff;
     display: flow-root;
   }
 
+}
+
+.baseModel {
+  .ant-form-item {
+    height: 59px;
+    margin-bottom: 0px;
+  }
 }
