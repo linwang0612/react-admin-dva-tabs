@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "webpack-dev-server --hot --mode development --config ./config/webpack.dev.js",
     "prod": "webpack --mode production --config ./config/webpack.prod.js",
-    "dll": "webpack --mode production --config ./config/webpack.dll.js",
     "analyz": "NODE_ENV=production npm_config_report=true npm run webpack --mode production --config ./config/webpack.analyzer.js"
   },
   "devDependencies": {
@@ -49,9 +48,6 @@
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
     "dva": "^2.4.1",
-    "echarts": "^4.2.1",
-    "fs": "0.0.1-security",
-    "moment": "^2.24.0",
     "qs": "^6.8.0"
   }
 }

@@ -15,10 +15,7 @@ export default {
     setTabTrans(state, { trans }) {
       return {
         ...state,
-        tabTrans: {
-          ...state.tabTrans,
-          ...trans
-        }
+        tabTrans: trans
       }
     }
   },

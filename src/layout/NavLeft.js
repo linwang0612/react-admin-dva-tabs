@@ -8,30 +8,45 @@ import tabsConfig from '../base/config/tabsConfig';
 class NavLeft extends Component {
     constructor(props) {
         super(props);
-        this.renderMenu = this.creatMenu()
     }
     jump(path) {//路由跳转
         this.props.dispatch({ type: 'global/addTabs', path: path })
     }
-    creatMenu() {
-        return menuList.map((item, index) => {
-            const itemTab = tabsConfig[item.path]
-            return (
-                <Menu.Item
-                    key={index}
-                    onClick={() => this.jump(item.path)}
-                >
-                    {item.icon ? <Icon type={item.icon} /> : ''}
-                    <span>{itemTab.name}</span>
-                </Menu.Item>
-            )
-        })
+    renderMenu() {
+        const creat = (data, index) => {
+            let list = [];
+            for (let i = 0; i < data.length; i++) {
+                const itemTab = tabsConfig[data[i].path]
+                if (data[i].children) {
+                    list.push(
+                        <Menu.SubMenu
+                            key={'' + i}
+                            title={<span>{data[i].icon && <Icon type={data[i].icon} />}<span>{itemTab.name}</span></span>}
+                        >
+                            {creat(data[i].children, i)}
+                        </Menu.SubMenu>
+                    )
+                } else {
+                    list.push(
+                        <Menu.Item
+                            key={index !== undefined ? index + '' + i : '' + i}
+                            onClick={() => this.jump(data[i].path)}
+                        >
+                            {data[i].icon && <Icon type={data[i].icon} />}
+                            <span>{itemTab.name}</span>
+                        </Menu.Item>
+                    )
+                }
+            }
+            return list
+        }
+        return creat(menuList)
     }
     render() {
         return (
             <React.Fragment>
                 <Menu theme="dark" mode="vertical">
-                    {this.renderMenu}
+                    {this.renderMenu()}
                 </Menu>
             </React.Fragment>
         )

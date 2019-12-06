@@ -6,17 +6,12 @@ import './index.scss';
 
 const { Header, Sider, Content } = Layout;
 
-const isLocalHost = window.location.hostname === 'localhost';
-
 export default function Home(props) {
   return (
     <Layout>
-      {
-        isLocalHost &&
-        <Header className="rootHeader">
-          <Userbar />
-        </Header>
-      }
+      <Header className="rootHeader">
+        <Userbar />
+      </Header>
       <Layout>
         <Sider
           trigger={null}

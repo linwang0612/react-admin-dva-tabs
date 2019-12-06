@@ -1,25 +1,30 @@
 import React from 'react';
-import ProductComp from '../../pages/Product/Productcomp'
-import WorkCenterComp from '../../pages/WorkCenter/WorkCenterComp'
-import ProductionLineComp from '../../pages/ProductionLine/ProductionLineComp'
-import WorkManagementComp from '../../pages/WorkManagement/WorkManagementComp'
+import PageOne from '../../pages/PageOne'
+import ChildOne from '../../pages/PageOne/ChildOne'
+import ChildTwo from '../../pages/PageOne/ChildTwo'
+import PageTwo from '../../pages/PageTwo'
+import PageThree from '../../pages/PageThree'
 
 export default {
-    'productlist': {
-        name: '产品',
-        component: () => <ProductComp />
+    'page1': {
+        name: '页面1',
+        component: () => <PageOne />
     },
-    'workCenterlist': {
-        name: '工作中心',
-        component: () => <WorkCenterComp />
+    'children1': {
+        name: '内页1',
+        component: () => <ChildOne />
     },
-    'productionLinelist': {
-        name: '产线',
-        component: () => <ProductionLineComp />
+    'children2': {
+        name: '内页2',
+        component: () => <ChildTwo />
     },
-    'workManagementlist': {
-        name: '工单管理',
-        component: () => <WorkManagementComp />
-    }
+    'page2': {
+        name: '页面2',
+        component: () => <PageTwo />
+    },
+    'page3': {
+        name: '页面3',
+        component: () => <PageThree />
+    },
 
 }

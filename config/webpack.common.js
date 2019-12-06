@@ -8,7 +8,7 @@ const devMode = process.env.NODE_ENV !== 'production'
 module.exports = {
   entry: {
     main: './src/index.js',
-    login: './src/pages/Login/index.js'
+    // login: './src/pages/Login/index.js'
   },
   output: {
     filename: 'scripts/[name].js?[hash]',

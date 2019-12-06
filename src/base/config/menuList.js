@@ -7,19 +7,23 @@
 
 export default [
     {
-        path: 'productlist',
+        path: 'page1',
+        icon: 'team',
+        // children: [
+        //     {
+        //         path: 'children1',
+        //     },
+        //     {
+        //         path: 'children2',
+        //     },
+        // ]
+    },
+    {
+        path: 'page2',
         icon: 'team',
     },
     {
-        path: 'workCenterlist',
+        path: 'page3',
         icon: 'team',
     },
-    {
-        path: 'productionLinelist',
-        icon: 'team',
-    },
-    {
-        path: 'workManagementlist',
-        icon: 'team',
-    }
 ]
